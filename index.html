@@ -11,33 +11,49 @@
 <script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore-compat.js"></script>
 <style>
   :root{
-    --paper:#F4EFE1;
-    --paper-alt:#ECE3CB;
-    --line:#D9CFB2;
-    --ink:#2E2A24;
-    --ink-soft:#8A806C;
-    --pen:#34495A;
-    --pen-soft:#5A7185;
-    --stamp:#B34A3D;
-    --white:#FFFDF8;
-    --shadow: 0 8px 24px rgba(46,42,36,0.12);
+    --paper:#FFFBFA;
+    --paper-alt:#F7E7EC;
+    --line:#E8D6DB;
+    --ink:#42505E;
+    --ink-soft:#93A2AD;
+    --pen:#5B7385;
+    --pen-soft:#8FA8B8;
+    --stamp:#E2799A;
+    --white:#FFFFFF;
+    --shadow: 0 8px 28px rgba(66,80,94,0.18);
   }
   *{box-sizing:border-box;}
   html,body{margin:0;padding:0;}
   body{
-    background: #DCD3BC;
-    background-image:
-      radial-gradient(circle at 20% 20%, rgba(255,255,255,0.25), transparent 40%),
-      radial-gradient(circle at 80% 80%, rgba(0,0,0,0.05), transparent 40%);
     min-height:100vh;
     font-family:'Inter',sans-serif;
     color:var(--ink);
     padding: 24px 12px 60px;
+    position: relative;
+    overflow-x: hidden;
+  }
+  .sakura-bg{
+    position: fixed; inset:0; z-index:-2;
+    background: linear-gradient(180deg, #AEC0CE 0%, #C9D3DC 22%, #E7D6DD 55%, #F3E3E6 78%, #F7ECE9 100%);
+  }
+  .sakura-bg svg{ position:absolute; bottom:0; left:0; width:100%; height:auto; }
+  .petal{
+    position: fixed; top:-5%; z-index:-1;
+    width: 12px; height: 12px;
+    background: radial-gradient(circle at 30% 30%, #FBDCE4, #E9A9BE 70%);
+    border-radius: 100% 0 100% 0;
+    opacity: 0.85;
+    animation: fall linear infinite;
+    pointer-events:none;
+  }
+  @keyframes fall{
+    0%{ transform: translateY(0) translateX(0) rotate(0deg); }
+    100%{ transform: translateY(108vh) translateX(40px) rotate(360deg); }
   }
   .book{
     max-width: 880px;
     margin: 0 auto;
-    background: var(--paper);
+    background: rgba(255,253,253,0.94);
     border-radius: 6px;
     box-shadow: var(--shadow);
     position: relative;
@@ -62,7 +78,7 @@
   }
   .spiral span{
     width: 14px; height:14px; border-radius:50%;
-    background: #DCD3BC;
+    background: #C7CFD7;
     box-shadow: inset 0 2px 3px rgba(0,0,0,0.35), 0 1px 0 rgba(255,255,255,0.4);
   }
   header{
@@ -74,7 +90,7 @@
     position:absolute;
     top:-20px; right: 18px;
     width: 90px; height: 30px;
-    background: rgba(232,220,192,0.75);
+    background: rgba(244,203,217,0.55);
     border: 1px solid rgba(0,0,0,0.04);
     transform: rotate(4deg);
     box-shadow: 0 2px 4px rgba(0,0,0,0.08);
@@ -303,6 +319,36 @@
 </head>
 <body>
 
+<div class="sakura-bg">
+<svg viewBox="0 0 1440 640" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="1180" cy="120" r="70" fill="#FCEFE9" opacity="0.8"/>
+  <path d="M0,360 C220,300 380,340 560,300 C760,255 900,320 1120,290 C1260,270 1360,300 1440,280 L1440,640 L0,640 Z" fill="#8FA3B4" opacity="0.35"/>
+  <path d="M0,430 C200,390 420,420 620,390 C840,358 1000,400 1200,380 C1320,368 1400,388 1440,378 L1440,640 L0,640 Z" fill="#6E8598" opacity="0.5"/>
+  <g opacity="0.9">
+    <path d="M40,640 C50,540 30,480 70,430 C90,405 110,415 100,440" stroke="#5B7385" stroke-width="7" fill="none" stroke-linecap="round"/>
+    <path d="M70,460 C40,440 10,445 -10,430" stroke="#5B7385" stroke-width="5" fill="none" stroke-linecap="round"/>
+    <path d="M85,445 C110,420 140,420 165,400" stroke="#5B7385" stroke-width="5" fill="none" stroke-linecap="round"/>
+    <path d="M60,410 C35,385 30,360 10,345" stroke="#5B7385" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <g fill="#F1A8C0">
+      <circle cx="8" cy="428" r="10"/><circle cx="30" cy="415" r="12"/><circle cx="55" cy="430" r="9"/>
+      <circle cx="95" cy="418" r="11"/><circle cx="125" cy="402" r="10"/><circle cx="150" cy="395" r="9"/>
+      <circle cx="15" cy="343" r="9"/><circle cx="-5" cy="330" r="8"/><circle cx="35" cy="360" r="7"/>
+      <circle cx="70" cy="440" r="8"/><circle cx="105" cy="395" r="8"/>
+    </g>
+  </g>
+  <g opacity="0.85">
+    <path d="M1440,640 C1430,560 1450,510 1410,470 C1390,450 1370,458 1382,478" stroke="#5B7385" stroke-width="6" fill="none" stroke-linecap="round"/>
+    <path d="M1400,490 C1425,470 1440,472 1440,460" stroke="#5B7385" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <path d="M1385,478 C1355,462 1335,465 1315,452" stroke="#5B7385" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <g fill="#F1A8C0">
+      <circle cx="1440" cy="465" r="9"/><circle cx="1418" cy="475" r="8"/><circle cx="1400" cy="488" r="10"/>
+      <circle cx="1370" cy="460" r="8"/><circle cx="1340" cy="450" r="7"/><circle cx="1315" cy="449" r="6"/>
+      <circle cx="1385" cy="472" r="7"/>
+    </g>
+  </g>
+</svg>
+</div>
+
 <div class="book">
   <div class="spiral">
     <span></span><span></span><span></span><span></span><span></span>
@@ -312,7 +358,7 @@
 
   <header>
     <div class="tape"></div>
-    <h1>🐾 貓貓體重手帳</h1>
+    <h1>🌸🐾 貓貓體重手帳</h1>
     <div class="subtitle">每天記一筆,體重變化一目瞭然</div>
     <div class="status-dot" id="statusDot"><i></i><span id="statusText">連線中…</span></div>
   </header>
@@ -577,9 +623,9 @@ function renderChart(){
       datasets: [{
         label: '體重 (kg)',
         data,
-        borderColor: '#34495A',
-        backgroundColor: 'rgba(52,73,90,0.08)',
-        pointBackgroundColor: '#B34A3D',
+        borderColor: '#5B7385',
+        backgroundColor: 'rgba(91,115,133,0.08)',
+        pointBackgroundColor: '#E2799A',
         pointRadius: 3,
         tension: 0.25,
         fill: true,
@@ -589,8 +635,8 @@ function renderChart(){
       responsive:true, maintainAspectRatio:false,
       plugins:{ legend:{ display:false } },
       scales:{
-        x:{ grid:{ color:'#EDE5D0' }, ticks:{ font:{family:'JetBrains Mono', size:10} } },
-        y:{ grid:{ color:'#EDE5D0' }, ticks:{ font:{family:'JetBrains Mono', size:10} } }
+        x:{ grid:{ color:'#F0DEE3' }, ticks:{ font:{family:'JetBrains Mono', size:10} } },
+        y:{ grid:{ color:'#F0DEE3' }, ticks:{ font:{family:'JetBrains Mono', size:10} } }
       }
     }
   });
@@ -658,6 +704,22 @@ deleteBtn.addEventListener('click', async ()=>{
     showToast('刪除失敗:' + err.message);
   }
 });
+
+function spawnPetals(){
+  const count = 14;
+  for(let i=0;i<count;i++){
+    const p = document.createElement('div');
+    p.className = 'petal';
+    const size = 8 + Math.random()*8;
+    p.style.width = size+'px';
+    p.style.height = size+'px';
+    p.style.left = Math.random()*100 + 'vw';
+    p.style.animationDuration = (9 + Math.random()*8) + 's';
+    p.style.animationDelay = (Math.random()*10) + 's';
+    document.body.appendChild(p);
+  }
+}
+spawnPetals();
 
 renderCalendar();
 </script>
